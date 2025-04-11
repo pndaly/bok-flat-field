@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <title>FlatField</title>
+  {% block css %}
+  {% endblock %}
+ </head>
+ <body style="background-color: #e6ffe6;" onload="startClock()">
+  <header id="header">
+   <div class="container d-flex justify-content-between">
+    <div class="item">
+     <a href="http://www.as.arizona.edu"><img title="SO" width="450" height="140" src="{{ url_for('static', filename='img/Steward-transparent.png') }}"></a>
+    </div>
+    <div class="item text-center">
+     <h1>Bok Flat Field Control</h1>
+     <h4 id="timenow" style="color:grey;"></h4>
+     <div></div>
+    </div>
+    <div class="item">
+     <a href="http://bok.as.arizona.edu"><img title="Bok" width="250" height="150" src="{{ url_for('static', filename='img/Bok.jpg') }}"></a>
+    </div>
+   </div>
+  </header>
+  <div class="container" style="background-color: powderblue;">
+   {% block content %}
+   {% endblock %}
+  </div>
+  <div class="container" style="background-color: powderblue;">
+   <p></p>
+  </div>
+  <script>
+   <!-- clock -->
+   function startClock() {
+    const now = new Date();
+    const isoDateString = now.toISOString();
+    document.getElementById('timenow').innerHTML =  "UTC: " + isoDateString;
+    setTimeout(startClock, 1000);
+   }
+   function checkClock(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+   }
+  </script>
+  {% block js %}
+  {% endblock %}
+ </body>
+</html>

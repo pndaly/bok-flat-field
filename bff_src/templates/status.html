@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+ <table class="table table-striped">
+  <thead>
+   <tr><th>Name</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+   {% for _k, _v in details.items() %}
+    <tr>
+     <td><font color="#0000ff">{{ _k }}</font></td>
+     {% if 'error' in _k  %}
+      {% if _v != '' %}
+       <td><font color="#ff0000"><b><i>{{ _v }}</i></b></font></td>
+      {% else %}
+       <td><font color="#0055ff"><b><i>No errors, server is responding OK</i></b></font></td>
+      {% endif %}
+     {% else %}
+       <td><font color="#0000aa">{{ _v }}</font></td>
+     {% endif %}
+    </tr>
+   {% endfor %}
+  </tbody>
+ <table>
+ <p><small><font color="grey">Raw Data: {{ details }}</font></small></p>
+ <p></p>
+ <div class="container-fluid">
+  <div class="row text-center">
+   <div class="col-md col-2">
+    <a href='/status'><button type="submit" class="btn btn-warning btn-block">Status</button></a>
+   </div>
+   <div class="col-md col-2">
+    <a href='/halogen/on'><button type="submit" class="btn btn-info btn-block">Halogen On</button></a>
+   </div>
+   <div class="col-md col-2">
+    <a href='/halogen/off'><button type="submit" class="btn btn-info btn-block">Halogen Off</button></a>
+   </div>
+   <div class="col-md col-2">
+    <a href='/uband/on'><button type="submit" class="btn btn-info btn-block">Uband On</button></a>
+   </div>
+   <div class="col-md col-2">
+    <a href='/uband/off'><button type="submit" class="btn btn-info btn-block">Uband Off</button></a>
+   </div>
+   <div class="col-md col-2">
+    <a href='/all/on'><button type="submit" class="btn btn-info btn-block">All On</button></a>
+   </div>
+   <div class="col-md col-2">
+    <a href='/all/off'><button type="submit" class="btn btn-info btn-block">All Off</button></a>
+   </div>
+   <div class="col-md col-2">
+    <a href='/routes'><button type="submit" class="btn btn-warning btn-block">Routes</button></a>
+   </div>
+  </div>
+ </div>
+{% endblock %}

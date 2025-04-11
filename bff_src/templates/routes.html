@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+ <table class="table table-striped">
+  <tbody>
+   {% for _r in routes %}
+    <tr> <td> <a href="{{ _r }}", title="{{ _r }}">{{ _r }}</a> </td> </tr>
+   {% endfor %}
+  </tbody>
+ <table>
+{% endblock %}
