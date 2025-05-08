@@ -13,7 +13,7 @@
  % python3 -m pip install -r requirements.txt
  % source bff_etc/bok-flat-field.sh `pwd` prod
  % cd ${BFF_SRC}
- % nohup python3 bok-flat-field >> /dev/null 2>&1 &
+ % nohup python3 bok-flat-field.py >> ${BFF_LOG}/bok-flat-field.log 2>&1 &
 ```
 
 ## Quick Test(s) (At Bok)
